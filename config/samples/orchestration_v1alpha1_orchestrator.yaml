@@ -6,6 +6,20 @@ metadata:
     app.kubernetes.io/managed-by: kustomize
   name: traffic-monitor
 spec:
+  namespace: user1
+  eventName: traffic-monitor
+  eventSources: 
+    - name: vehicle-detected 
+      type: webhook
+    - name: over-speed
+      type: webhook
+    - name: pedestrian-detected
+      type: webhook
+  services: 
+    - name: update
+      image: sjw980523/update:v1.2
+    - name: output
+      image: sjw980523/output:v1.2
   
 
 
